@@ -5,6 +5,7 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/toaster';
 import SidebarNav from '@/components/layout/SidebarNav';
 import Header from '@/components/layout/Header';
+import { ThemeProvider } from '@/components/layout/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'SignSpeak Tutor',
@@ -27,16 +28,23 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
-        <SidebarProvider>
-          <div className="flex min-h-screen">
-            <SidebarNav />
-            <div className="flex flex-1 flex-col">
-              <Header />
-              <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SidebarProvider>
+            <div className="flex min-h-screen">
+              <SidebarNav />
+              <div className="flex flex-1 flex-col">
+                <Header />
+                <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
+              </div>
             </div>
-          </div>
-        </SidebarProvider>
-        <Toaster />
+          </SidebarProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

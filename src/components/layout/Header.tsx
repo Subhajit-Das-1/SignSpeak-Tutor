@@ -20,6 +20,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Menu, User, Settings, LogOut } from "lucide-react";
 import Logo from "./Logo";
 import { useSidebar } from "../ui/sidebar";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header() {
   const { toggleSidebar } = useSidebar();
@@ -50,6 +51,7 @@ export default function Header() {
             </SelectContent>
           </Select>
         </div>
+        <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="rounded-full">
