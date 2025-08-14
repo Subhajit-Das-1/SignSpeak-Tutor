@@ -7,6 +7,12 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.1-38B2AC)](https://tailwindcss.com/)
 
+### 🚀 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/SignSpeak%20Tutor-Live%20Demo-2ea44f?style=for-the-badge)](https://sign-speak-tutor.vercel.app/)
+
+Production URL: https://sign-speak-tutor.vercel.app/
+
 ## 🌟 Features
 
 ### 🎯 **Core Learning Features**
