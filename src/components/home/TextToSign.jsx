@@ -5,19 +5,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mic, Volume2 } from "lucide-react";
+import SignTranslator from "./SignTranslator";
 
 export default function TextToSign() {
   const [text, setText] = useState("");
+  const [translatedText, setTranslatedText] = useState("");
   const [isTranslating, setIsTranslating] = useState(false);
 
   const handleTranslate = async () => {
     if (!text.trim()) return;
     
     setIsTranslating(true);
-    // TODO: Implement translation logic
-    setTimeout(() => {
-      setIsTranslating(false);
-    }, 2000);
+    setTranslatedText(text.trim());
+    setIsTranslating(false);
+  };
+
+  const handleTranslationComplete = () => {
+    console.log("Translation sequence completed");
   };
 
   return (
@@ -34,17 +38,22 @@ export default function TextToSign() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             className="flex-1"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleTranslate();
+              }
+            }}
           />
           <Button variant="outline" size="icon">
             <Mic className="h-4 w-4" />
           </Button>
         </div>
         
-        <div className="min-h-[400px] bg-muted/20 rounded-lg border-2 border-dashed border-muted-foreground/20 flex items-center justify-center">
-          <p className="text-muted-foreground text-center">
-            Your sign animation will appear here
-          </p>
-        </div>
+        {/* Sign Translator Component */}
+        <SignTranslator 
+          text={translatedText} 
+          onComplete={handleTranslationComplete}
+        />
         
         <div className="flex justify-end">
           <Button 

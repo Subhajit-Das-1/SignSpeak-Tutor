@@ -8,7 +8,8 @@
     "genkit:watch": "genkit start -- node --watch src/ai/dev.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "setup-signs": "node scripts/setup-signs-folder.js"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.14.1",
