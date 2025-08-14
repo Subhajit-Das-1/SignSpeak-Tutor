@@ -2,6 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Card } from "@/components/ui/card";
+import HelloSign from "@/components/signs/HelloSign";
+import ThankYouSign from "@/components/signs/ThankYouSign";
+import PleaseSign from "@/components/signs/PleaseSign";
+import YesNoSign from "@/components/signs/YesNoSign";
+import GoodBadSign from "@/components/signs/GoodBadSign";
 
 function buildCandidateUrlsForToken(token) {
   // Order of preference for assets
@@ -146,6 +151,23 @@ export default function SignTranslator({ text, onComplete }) {
   }, [videoRef.current]);
 
   const currentToken = sequence[currentIndex]?.token || null;
+
+  // Special handling for common words - show custom ASL components
+  if (normalized === "hello") {
+    return <HelloSign />;
+  }
+  if (normalized === "thank you" || normalized === "thanks") {
+    return <ThankYouSign />;
+  }
+  if (normalized === "please") {
+    return <PleaseSign />;
+  }
+  if (normalized === "yes" || normalized === "no") {
+    return <YesNoSign />;
+  }
+  if (normalized === "good" || normalized === "bad") {
+    return <GoodBadSign />;
+  }
 
   if (!normalized) {
     return (

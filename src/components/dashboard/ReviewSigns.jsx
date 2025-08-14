@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Brain } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const reviewSigns = {
   favorites: [
@@ -35,12 +38,14 @@ function SignCard({ sign }) {
 }
 
 export default function ReviewSigns() {
+  const { t } = useLanguage();
+  
   return (
     <div className="grid gap-8 lg:grid-cols-2">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 font-headline">
-            <Heart className="text-red-500" /> Your Favorite Signs
+            <Heart className="text-red-500" /> {t('yourFavoriteSigns')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -54,7 +59,7 @@ export default function ReviewSigns() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 font-headline">
-            <Brain className="text-blue-500" /> Signs to Practice
+            <Brain className="text-blue-500" /> {t('signsToPractice')}
           </CardTitle>
         </CardHeader>
         <CardContent>

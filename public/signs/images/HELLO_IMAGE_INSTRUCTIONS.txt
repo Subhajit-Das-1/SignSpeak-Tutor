@@ -1,0 +1,22 @@
+HELLO Sign Language Image Instructions
+=====================================
+
+Create a PNG image file named "hello.png" and place it in: public/signs/images/hello.png
+
+Image Description:
+- Top: The word "HELLO" in bold black letters
+- Below: Five hands arranged horizontally showing ASL letters:
+  1. H: Index and middle fingers extended together, thumb tucked
+  2. E: All fingers curled toward palm, thumb on palm  
+  3. L: Thumb and index finger extended upward, other fingers curled
+  4. L: Same as above (second L)
+  5. O: All fingers and thumb curled to form a circle
+
+Image specifications:
+- Format: PNG
+- Dimensions: 400x300 pixels
+- Background: White
+- Hands: Black outline on white background
+- Text: Bold black sans-serif font
+
+The SignTranslator component will automatically load this when users search for "hello"

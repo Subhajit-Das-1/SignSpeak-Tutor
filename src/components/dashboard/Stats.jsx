@@ -1,25 +1,30 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookMarked, Flame, Target } from "lucide-react";
-
-const stats = [
-  {
-    title: "Signs Learned",
-    value: "78",
-    icon: BookMarked,
-  },
-  {
-    title: "Current Streak",
-    value: "🔥 5 days",
-    icon: Flame,
-  },
-  {
-    title: "Quiz Accuracy",
-    value: "85%",
-    icon: Target,
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Stats() {
+  const { t } = useLanguage();
+
+  const stats = [
+    {
+      title: t('signsLearned'),
+      value: "78",
+      icon: BookMarked,
+    },
+    {
+      title: t('currentStreak'),
+      value: "🔥 5 days",
+      icon: Flame,
+    },
+    {
+      title: t('quizAccuracy'),
+      value: "85%",
+      icon: Target,
+    },
+  ];
+
   return (
     <div className="grid gap-4 md:grid-cols-3">
       {stats.map((stat) => (

@@ -1,45 +1,50 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Coffee, Hand, Users, Building, Move } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const modules = [
-  {
-    title: "Greetings",
-    icon: Hand,
-    description: "Learn how to say hello, goodbye, and more.",
-  },
-  {
-    title: "Daily Essentials",
-    icon: Coffee,
-    description: "Signs for everyday items and activities.",
-  },
-  {
-    title: "Family & People",
-    icon: Users,
-    description: "Communicate about the people in your life.",
-  },
-  {
-    title: "Alphabets (A-Z)",
-    icon: BookOpen,
-    description: "Master the foundational building blocks.",
-  },
-  {
-    title: "Action Words",
-    icon: Move,
-    description: "Express actions like run, eat, and sleep.",
-  },
-  {
-    title: "Places",
-    icon: Building,
-    description: "Signs for common locations.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function LearningModules() {
+  const { t } = useLanguage();
+
+  const modules = [
+    {
+      title: t('greetings'),
+      icon: Hand,
+      description: t('greetingsDesc'),
+    },
+    {
+      title: t('dailyEssentials'),
+      icon: Coffee,
+      description: t('dailyEssentialsDesc'),
+    },
+    {
+      title: t('familyAndPeople'),
+      icon: Users,
+      description: t('familyAndPeopleDesc'),
+    },
+    {
+      title: t('alphabets'),
+      icon: BookOpen,
+      description: t('alphabetsDesc'),
+    },
+    {
+      title: t('actionWords'),
+      icon: Move,
+      description: t('actionWordsDesc'),
+    },
+    {
+      title: t('places'),
+      icon: Building,
+      description: t('placesDesc'),
+    },
+  ];
+
   return (
     <section className="space-y-4">
       <h2 className="text-2xl font-bold font-headline text-primary">
-        Learning Modules
+        {t('learningModules')}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {modules.map((module) => (
@@ -53,7 +58,7 @@ export default function LearningModules() {
             </CardContent>
             <CardContent>
               <Button variant="outline" className="w-full">
-                Start Learning <ArrowRight className="ml-2 h-4 w-4" />
+                {t('startLearning')} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardContent>
           </Card>
@@ -61,7 +66,7 @@ export default function LearningModules() {
       </div>
       <div className="text-center pt-4">
         <Button>
-          Explore All Modules
+          {t('exploreAllModules')}
         </Button>
       </div>
     </section>

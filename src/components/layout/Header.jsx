@@ -21,9 +21,18 @@ import { Menu, User, Settings, LogOut } from "lucide-react";
 import Logo from "./Logo";
 import { useSidebar } from "../ui/sidebar";
 import { ThemeToggle } from "./ThemeToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { toggleSidebar } = useSidebar();
+  const { language, changeLanguage, t } = useLanguage();
+  const router = useRouter();
+
+  const handleProfileClick = () => {
+    router.push('/dashboard');
+  };
+
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 md:px-6">
       <Button
@@ -40,9 +49,9 @@ export default function Header() {
       </div>
       <div className="flex w-full items-center justify-end gap-4">
         <div className="w-[180px]">
-          <Select defaultValue="en">
+          <Select value={language} onValueChange={changeLanguage}>
             <SelectTrigger>
-              <SelectValue placeholder="Select language" />
+              <SelectValue placeholder={t('selectLanguage')} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="en">English</SelectItem>
@@ -62,20 +71,20 @@ export default function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>{t('myAccount')}</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleProfileClick}>
               <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
+              <span>{t('profile')}</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Settings className="mr-2 h-4 w-4" />
-              <span>Settings</span>
+              <span>{t('settings')}</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <LogOut className="mr-2 h-4 w-4" />
-              <span>Log out</span>
+              <span>{t('logout')}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

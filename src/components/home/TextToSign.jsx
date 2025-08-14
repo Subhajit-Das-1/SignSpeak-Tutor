@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mic, Volume2 } from "lucide-react";
 import SignTranslator from "./SignTranslator";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function TextToSign() {
+  const { t } = useLanguage();
   const [text, setText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
   const [isTranslating, setIsTranslating] = useState(false);
@@ -28,13 +30,13 @@ export default function TextToSign() {
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-xl font-headline text-primary">
-          Text to Sign Translation
+          {t('textToSignTranslation')}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex gap-2">
           <Input
-            placeholder="Type a word or sentence..."
+            placeholder={t('typeWordOrSentence')}
             value={text}
             onChange={(e) => setText(e.target.value)}
             className="flex-1"
@@ -62,7 +64,7 @@ export default function TextToSign() {
             className="gap-2"
           >
             <Volume2 className="h-4 w-4" />
-            {isTranslating ? "Translating..." : "Translate"}
+            {isTranslating ? t('translating') : t('translate')}
           </Button>
         </div>
       </CardContent>

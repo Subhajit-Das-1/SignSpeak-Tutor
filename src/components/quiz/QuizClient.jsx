@@ -9,8 +9,10 @@ import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
 import { CheckCircle2, XCircle, Award, RotateCw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function QuizClient({ quiz }) {
+  const { t } = useLanguage();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
@@ -54,15 +56,15 @@ export function QuizClient({ quiz }) {
     return (
       <div className="flex flex-col items-center justify-center text-center p-8">
         <Award className="h-24 w-24 text-accent mb-4" />
-        <h2 className="text-3xl font-bold font-headline mb-2">Quiz Complete!</h2>
+        <h2 className="text-3xl font-bold font-headline mb-2">{t('quizComplete')}</h2>
         <p className="text-xl text-muted-foreground mb-6">
-          You scored{" "}
-          <strong className="text-primary">{score}</strong> out of{" "}
+          {t('youScored')}{" "}
+          <strong className="text-primary">{score}</strong> {t('outOf')}{" "}
           <strong className="text-primary">{totalQuestions}</strong>
         </p>
         <Button onClick={handleRestart}>
           <RotateCw className="mr-2 h-4 w-4" />
-          Play Again
+          {t('playAgain')}
         </Button>
       </div>
     );
@@ -72,7 +74,7 @@ export function QuizClient({ quiz }) {
     <div className="space-y-6">
       <div className="space-y-2">
         <p className="text-sm text-muted-foreground">
-          Question {currentQuestionIndex + 1} of {totalQuestions}
+          {t('question')} {currentQuestionIndex + 1} of {totalQuestions}
         </p>
         <Progress value={progress} />
       </div>
@@ -125,11 +127,11 @@ export function QuizClient({ quiz }) {
       <div className="flex justify-end">
         {answerState === "unanswered" ? (
           <Button onClick={handleCheckAnswer} disabled={selectedOption === null}>
-            Check Answer
+            {t('checkAnswer')}
           </Button>
         ) : (
           <Button onClick={handleNextQuestion}>
-            {currentQuestionIndex === totalQuestions - 1 ? "Finish Quiz" : "Next Question"}
+            {currentQuestionIndex === totalQuestions - 1 ? t('finishQuiz') : t('nextQuestion')}
           </Button>
         )}
       </div>

@@ -12,15 +12,17 @@ import { Home, LayoutDashboard, BrainCircuit, Settings, LifeBuoy } from "lucide-
 import Logo from "./Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navItems = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/quiz", label: "Quiz", icon: BrainCircuit },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function SidebarNav() {
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const navItems = [
+    { href: "/", label: t('home'), icon: Home },
+    { href: "/dashboard", label: t('dashboard'), icon: LayoutDashboard },
+    { href: "/quiz", label: t('quiz'), icon: BrainCircuit },
+  ];
 
   return (
     <Sidebar>
@@ -45,15 +47,15 @@ export default function SidebarNav() {
       </SidebarMenu>
       <SidebarFooter>
         <SidebarMenuItem>
-          <SidebarMenuButton tooltip="Settings">
+          <SidebarMenuButton tooltip={t('settings')}>
             <Settings className="h-5 w-5" />
-            <span>Settings</span>
+            <span>{t('settings')}</span>
           </SidebarMenuButton>
         </SidebarMenuItem>
         <SidebarMenuItem>
-          <SidebarMenuButton tooltip="Support">
+          <SidebarMenuButton tooltip={t('support')}>
             <LifeBuoy className="h-5 w-5" />
-            <span>Support</span>
+            <span>{t('support')}</span>
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarFooter>
