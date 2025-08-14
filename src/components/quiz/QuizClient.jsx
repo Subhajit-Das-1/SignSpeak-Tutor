@@ -81,7 +81,7 @@ export function QuizClient({ quiz }) {
         <CardContent className="p-6 text-center">
           <p className="text-lg mb-4">{currentQuestion.questionText}</p>
           <Image
-            src="https://placehold.co/400x300.png"
+            src={currentQuestion.signAnimationDataUri || "https://placehold.co/400x300.png"}
             alt="Sign language animation"
             width={400}
             height={300}

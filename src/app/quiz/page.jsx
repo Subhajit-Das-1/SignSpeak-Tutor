@@ -50,12 +50,12 @@ export default function QuizPage() {
               </p>
             </div>
           )}
-          {!isPending && quizData && quizData.questions.length > 0 ? (
+          {!isPending && quizData && quizData.questions && quizData.questions.length > 0 ? (
             <QuizClient quiz={quizData} key={JSON.stringify(quizData)} />
           ) : (
             !isPending && (
               <div className="text-center py-10">
-                <p>Could not generate a quiz. Please try again.</p>
+                <p>Failed to generate new quiz. Please try again.</p>
               </div>
             )
           )}
