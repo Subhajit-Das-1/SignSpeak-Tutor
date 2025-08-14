@@ -198,4 +198,4 @@ If you have any questions or need help:
 
 ---
 
-**Made with ❤️ for the sign language learning community**
+**Made for the sign language learning community**
